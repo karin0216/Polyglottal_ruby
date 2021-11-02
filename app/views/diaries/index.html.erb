@@ -1,17 +1,26 @@
-<h1>Diaries</h1>
-<%= link_to 'Add New Diary', new_diary_path, class:"btn btn-dark"%> 
+<% if user_signed_in? %>
+
+<h1>Your diaries</h1>
+<br>
+<%= link_to ' Add New Diary', new_diary_path, class:"btn btn-dark bi bi-plus-circle-fill", :style=>"background-color:#D15FEB; border-color:#D15FEB;" %> 
 <br>
 <br>
   <% @diaries.each do |diary| %>
+  <% if diary.user == current_user %>
   <div class="card" style="width: 18rem;">
+  <div class="card-header">
+      <%= diary.created_at.localtime.strftime('%Y/%m/%d') %> <%= diary.feeling %>
+  </div>
     <div class="card-body">
       <h5 class="card-title"><%= diary.title %></h5>
-      <h6 class="card-subtitle mb-2 text-muted"><%= diary.feeling %></h6>
-      <p class="card-text"><%= diary.text %></p>
-      <p class="card-text"><%= diary.created_at %></p>
-      <%= link_to 'See details', diary, class:"bi bi-check-circle-fill"%>
-      <%= link_to 'Delete', diary, method: :delete, data: { confirm: 'Are you sure?' }, class:"bi bi-trash"%>
+      <%= link_to ' See details', diary, class:"btn btn-dark bi bi-search", :style=>"background-color:#D15FEB; border-color:#D15FEB;" %>
     </div>
 </div>
+<% end %>
 <br>
+<% end %>
+
+<% else %>
+<h1>Welcome to Diary app!</h1>
+<%= link_to "Sign In", new_user_session_path, class:"nav-link"%>
 <% end %>

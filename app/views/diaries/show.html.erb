@@ -1,10 +1,12 @@
 <div class="card">
-  <h5 class="card-header"><%= @diary.feeling %></h5>
+  <h5 class="card-header"><%= @diary.created_at.localtime.strftime('%Y/%m/%d') %> <%= @diary.feeling %></h5>
   <div class="card-body">
     <h5 class="card-title">Title: <%= @diary.title %></h5>
     <p class="card-text"><%= @diary.text %></p>
-    <%= link_to ' Edit', edit_diary_path(@diary), class:"btn btn-dark bi bi-pencil-square" %> 
-    <%= link_to ' Back', root_path, class:"btn btn-dark bi bi-house" %>
+    <%= link_to ' Edit', edit_diary_path(@diary), class:"btn btn-dark bi bi-pencil-square", :style=>"background-color:#D15FEB; border-color:#D15FEB;" %> 
+    <%= link_to ' Delete', @diary, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-dark bi bi-trash", :style=>"background-color:#7d7b7a; border-color:#7d7b7a;"%>
   </div>
 </div>
+<br>
+<%= link_to ' Back', root_path, class:"btn btn-dark bi bi-house" , :style=>"background-color:#D15FEB; border-color:#D15FEB;" %>
 
