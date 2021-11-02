@@ -1,0 +1,19 @@
+<h1>Diaries</h1>
+  <% @diaries.each do |diary| %>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= diary.title %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= diary.feeling %></h6>
+      <p class="card-text"><%= diary.text %></p>
+      <p class="card-text"><%= diary.created_at %></p>
+      <%= link_to 'Show', diary, class:"card-link"%>
+      <%= link_to 'Edit', edit_diary_path(diary), class:"card-link"%>
+      <%= link_to 'Destroy', diary, method: :delete, data: { confirm: 'Are you sure?' }, class:"card-link"%>
+    </div>
+</div>
+<br>
+<% end %>
+
+<%= link_to 'Add New Diary', new_diary_path, class:"btn btn-dark"%> 
+<br>
+<br>
