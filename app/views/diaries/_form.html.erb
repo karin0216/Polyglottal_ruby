@@ -10,23 +10,38 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field form-group">
-    <%= form.text_field :title, class:"form-control", placeholder:"Title" %>
+  <section>
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-center mb-5">New diary</h2>
+                    <div class="field form-group">
+                      <%= form.text_field :title, class:"form-control", placeholder:"Title" %>
+                    </div>
+                    <br>
+                    <div class="field form-group">
+                      <%= form.select :feeling, {'awsome': '🤩', 'good': '😊', 'not bad': '🙂', 'bad': '😞', 'awful': '😭'}, {include_blank: 'How do you feel today?'}, {class: 'form-control'}%>
+                    </div>
+                    <br>
+                    <div class="field form-group">
+                      <%= form.text_area :text, class:"form-control", placeholder:"Enter some text...", rows: "10" %>
+                    </div>
+                    <div class="field form-group">
+                      <%= form.text_field :user_id, id: :diary_user_id, class:"form-control", value: current_user.id, type: :hidden %>
+                    </div>
+                    <br>
+                    <div class="actions">
+                      <%= form.submit class:"btn btn-dark", :style=>"background-color:#D15FEB; border-color:#D15FEB;" %>
+                    </div>
+                  <% end %>
+                <br>
+              <%= link_to 'Cancel', root_path, class:"btn btn-dark", :style=>"background-color:#7d7b7a; border-color:#7d7b7a;"  %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <br>
-  <div class="field form-group">
-    <%= form.text_field :feeling, class:"form-control", placeholder:"How do you feel today?" %>
-  </div>
-  <br>
-  <div class="field form-group">
-    <%= form.text_field :text, class:"form-control", placeholder:"Enter some text..." %>
-  </div>
-  <div class="field form-group">
-    <%= form.text_field :user_id, id: :diary_user_id, class:"form-control", value: current_user.id, type: :hidden %>
-  </div>
-  <br>
-  <div class="actions">
-    <%= form.submit class:"btn btn-dark", :style=>"background-color:#D15FEB; border-color:#D15FEB;" %>
-  </div>
-<% end %>
