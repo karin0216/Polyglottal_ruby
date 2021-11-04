@@ -1,26 +1,18 @@
 <% if user_signed_in? %>
-
-<h1>Your diaries</h1>
+<h1>How do you feel today?</h1>
+<br>
+<%= month_calendar(events: @diaries) do |date, diaries| %>
+  <%= date.day %>
+  <br>
+  <% diaries.each do |diary| %>
+    <%= link_to diary.feeling, diary, :style=>"text-decoration: none; font-size: 20px;"%>
+<% end %>
+<% end %>
 <br>
 <%= link_to ' Add new diary', new_diary_path, class:"btn btn-dark bi bi-plus-circle-fill", :style=>"background-color:#D15FEB; border-color:#D15FEB;" %> 
-<br>
-<br>
-  <% @diaries.each do |diary| %>
-  <% if diary.user == current_user %>
-  <div class="card" style="width: 18rem;">
-  <div class="card-header">
-      <%= diary.created_at.localtime.strftime('%Y/%m/%d') %> <%= diary.feeling %>
-  </div>
-    <div class="card-body">
-      <h5 class="card-title"><%= diary.title %></h5>
-      <%= link_to ' See details', diary, class:"btn btn-dark", :style=>"background-color:#D15FEB; border-color:#D15FEB;" %>
-    </div>
-</div>
-<% end %>
-<br>
-<% end %>
 
 <% else %>
+<div class="head">
 <h1>Welcome to Diary app!</h1>
-<%= link_to "Sign In", new_user_session_path, class:"nav-link"%>
 <% end %>
+</div>

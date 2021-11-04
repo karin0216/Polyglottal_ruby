@@ -4,4 +4,28 @@
 
 body {
     font-family: 'Nunito', sans-serif;
+    color: #4f4c4c;
+}
+
+.head {
+    background-image: url("head.jpg");
+    background-size: cover;
+    background-position: top;
+    height: 80vh;
+}
+
+.calendar-title {
+    font-size: 24px;
+}
+
+a {
+    color: #D15FEB;
+}
+
+th {
+    font-size: 20px;
+}
+
+.day {
+    font-size: 18px;
 }
