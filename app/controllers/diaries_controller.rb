@@ -1,6 +1,6 @@
 class DiariesController < ApplicationController
   before_action :set_diary, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [ :index, :show]
+  before_action :authenticate_user!, except: [ :index]
   before_action :correct_user, only: [:edit, :destroy, :update]
   
   # GET /diaries or /diaries.json
