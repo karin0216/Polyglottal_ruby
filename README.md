@@ -24,4 +24,4 @@ https://diary-app-0216.herokuapp.com/
   - Ruby on Rails
 
 - Database
-  - Postgres (Production)
+  - Postgres
